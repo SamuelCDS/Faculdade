@@ -1,0 +1,24 @@
+close all
+clear all
+clc
+pkg load image
+
+img = imread('pcb.jpg');
+col = uint8(-1*(double(img)-255));
+bi =  im2bw(img, 0.75);
+
+sH = fspecial('sobel');
+S_H = filter2(sH, bi, 'same');
+S_H = abs(S_H);
+
+sV = sH';
+S_V = filter2(sV, bi, 'same');
+S_V = abs(S_V);
+
+S_H_V = S_H + S_V;
+
+Fator = .5;
+BWs = edge(bi,'sobel', threshold * Fator);
+figure, imshow(bi);
+figure, imshow(S_H_V,[]);
+figure, imshow(BWs);
