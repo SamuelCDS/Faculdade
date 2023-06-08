@@ -1,57 +1,48 @@
 import socket, sys, tkinter
 
-lista = []
 HOST = 'localhost'
 PORT = 1234
-
-CHUNK = 1024
-#FORMAT = pyaudio.paInt16
-CHANNELS = 1
-RATE = 44100
 
 conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 conn.bind((HOST, PORT))
 conn.listen(4)
 
 
-class aplic:
+class Aplic:
     def __init__(self, master=None):
         file = "/home/samuelcds/Músicas/Angelo Boltini - This Town.mp3"
-        self.musica = open()
+        self.musica = open(file, "rb")
 
         self.principal = tkinter.Frame(master)
-        self.principal["pady"] = 100
-        self.principal["padx"] = 450
+        self.principal["pady"] = 60
+        self.principal["padx"] = 100
         self.principal.pack(side="top")
         self.msg = tkinter.Label(self.principal, text="Stream de Áudio")
         self.msg["font"] = ("Arial", "14", "bold")
         self.msg.pack(side="top")
 
-        self.inserir = tkinter.Frame(master)
-        self.inserir["padx"] = 1
-        self.inserir.pack()
-        self.ms1 = tkinter.Label(self.inserir, text="Nome da música: ", font="Arial")
-        self.ms1.pack(side="left")
-        self.nome = tkinter.Entry(self.inserir)
-        self.nome["width"] = 70
-        self.nome["font"] = ("Arial", "10")
-        self.nome.pack(side="left")
+        self.textout = tkinter.Frame(master)
+        self.textout["padx"] = 30
+        self.textout.pack()
+        self.ms1 = tkinter.Label(self.textout, text="", font="Arial")
+        self.ms1.pack(side="top")
+        
 
-        self.bus = tkinter.Frame(master)
-        self.bus["pady"] = -100
-        self.bus["padx"] = 50
-        self.bus.pack(side="right")
-        self.buscar = tkinter.Button(self.bus)
-        self.buscar["text"] = "Buscar música"
-        self.buscar["font"] = ("Arial", "10")
-        self.buscar["width"] = 10
-        self.buscar["command"] = self.buscarNome
-        self.buscar.pack(side="top")
-        self.ms2 = tkinter.Label(self.bus, text="", font=("Arial", "12"))
+        self.res = tkinter.Frame(master)
+        self.res["pady"] = 5
+        self.res["padx"] = 50
+        self.res.pack()
+        self.restart = tkinter.Button(self.res)
+        self.restart["text"] = "Restart music"
+        self.restart["font"] = ("Arial", "10")
+        self.restart["width"] = 13
+        self.restart["command"] = self.Reiniciar
+        self.restart.pack(side="top")
+        self.ms2 = tkinter.Label(self.res, text="", font=("Arial", "12"))
         self.ms2.pack()
 
         self.pl = tkinter.Frame(master)
-        self.pl["pady"] = -100
+        self.pl["pady"] = 10
         self.pl["padx"] = 50
         self.pl.pack()
         self.play = tkinter.Button(self.pl)
@@ -60,7 +51,7 @@ class aplic:
         self.play["width"] = 10
         self.play["command"] = self.Play
         self.play.pack(side="top")
-        self.ms3 = tkinter.Label(self.bus, text="", font=("Arial", "12"))
+        self.ms3 = tkinter.Label(self.pl, text="", font=("Arial", "12"))
         self.ms3.pack()
 
         self.ps = tkinter.Frame(master)
@@ -73,19 +64,17 @@ class aplic:
         self.pause["width"] = 10
         self.pause["command"] = self.Pause
         self.pause.pack()
-        self.ms4 = tkinter.Label(self.bus, text="", font=("Arial", "12"))
+        self.ms4 = tkinter.Label(self.res, text="", font=("Arial", "12"))
         self.ms4.pack()
 
-    def servidor(self):
-        pass
-
+        self.espaco = tkinter.Frame(master)
+        self.espaco["pady"] = 10
+        self.espaco.pack()
+        self.space = tkinter.Label(self.espaco, text="", font=("Arial", "12"))
+        self.space.pack()
     
-    def buscarNome(self):
-        musga = self.nome.get()
-        if musga not in self.musica:
-            self.ms2["text"] = "Música não encontrada"
-        else:
-            self.ms2["text"] = "Música encontrada"
+    def Reiniciar(self):
+        pass
     
     def Play(self):
         pass
@@ -93,6 +82,7 @@ class aplic:
     def Pause(self):
         pass
 
-root = tkinter.Tk()
-aplic(root)
-root.mainloop()
+if __name__ == '__main__':
+    root = tkinter.Tk()
+    Aplic(root)
+    root.mainloop()
