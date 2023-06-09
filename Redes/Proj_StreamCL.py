@@ -81,13 +81,13 @@ class Aplic:
     def Play(self):
         self.client.send(1024)
         self.pa = pyaudio.PyAudio()
-        self.stream = pyaudio.open(format=pyaudio.paInt16,
+        self.stream = self.pa.open(format=pyaudio.paInt16,
                                    channels=2,
-                                   rate=44100
+                                   rate=44100,
                                    output=True)
         while True:
             self.data = self.client.recv(1024)
-            if not data:
+            if not self.data:
                 break
             self.stream.write(self.data)
 
