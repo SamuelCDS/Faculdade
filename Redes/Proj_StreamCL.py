@@ -81,7 +81,7 @@ class Aplic:
     def Play(self):
         self.client.send(1024)
         self.pa = pyaudio.PyAudio()
-        self.stream = self.pa.open(format=pyaudio.paInt16,
+        self.stream = self.pa.open(format=self.pa.paInt16,
                                    channels=2,
                                    rate=44100,
                                    output=True)
