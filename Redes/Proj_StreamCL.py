@@ -20,14 +20,15 @@ class Aplic:
         self.msg = tkinter.Label(self.principal, text="Stream de Áudio")
         self.msg["font"] = ("Arial", "14", "bold")
         self.msg.pack(side="top")
-
+        
+        #Saida de textos:
         self.textout = tkinter.Frame(master)
         self.textout["padx"] = 30
         self.textout.pack()
         self.ms1 = tkinter.Label(self.textout, text="", font="Arial")
         self.ms1.pack(side="top")
         
-
+        #Botão para reiniciar a reprodução:
         self.res = tkinter.Frame(master)
         self.res["pady"] = 5
         self.res["padx"] = 50
@@ -40,7 +41,8 @@ class Aplic:
         self.restart.pack(side="top")
         self.ms2 = tkinter.Label(self.res, text="", font=("Arial", "12"))
         self.ms2.pack()
-
+        
+        #Botão para iniciar reprodução:
         self.pl = tkinter.Frame(master)
         self.pl["pady"] = 10
         self.pl["padx"] = 50
@@ -53,7 +55,8 @@ class Aplic:
         self.play.pack(side="top")
         self.ms3 = tkinter.Label(self.pl, text="", font=("Arial", "12"))
         self.ms3.pack()
-
+        
+        #Botão para pausar a reprodução:
         self.ps = tkinter.Frame(master)
         self.ps["pady"] = -100
         self.ps["padx"] = 50
@@ -67,6 +70,7 @@ class Aplic:
         self.ms4 = tkinter.Label(self.res, text="", font=("Arial", "12"))
         self.ms4.pack()
 
+        #Pessoas conectadas:
         self.espaco = tkinter.Frame(master)
         self.espaco["pady"] = 10
         self.espaco.pack()
