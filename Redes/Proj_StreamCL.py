@@ -1,18 +1,7 @@
-import socket, sys, tkinter
-
-HOST = 'localhost'
-PORT = 1234
-
-conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-conn.bind((HOST, PORT))
-conn.listen(4)
-
+import socket, pyaudio, tkinter
 
 class Aplic:
     def __init__(self, master=None):
-        file = "/home/samuelcds/Músicas/Angelo Boltini - This Town.mp3"
-        self.musica = open(file, "rb")
-
         self.principal = tkinter.Frame(master)
         self.principal["pady"] = 60
         self.principal["padx"] = 100
@@ -25,8 +14,8 @@ class Aplic:
         self.textout = tkinter.Frame(master)
         self.textout["padx"] = 30
         self.textout.pack()
-        self.ms1 = tkinter.Label(self.textout, text="", font="Arial")
-        self.ms1.pack(side="top")
+        self.To = tkinter.Label(self.textout, text="", font="Arial")
+        self.To.pack(side="top")
         
         #Botão para reiniciar a reprodução:
         self.res = tkinter.Frame(master)
@@ -76,15 +65,35 @@ class Aplic:
         self.espaco.pack()
         self.space = tkinter.Label(self.espaco, text="", font=("Arial", "12"))
         self.space.pack()
+        
+        #Conexão com o servidor:
+        self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.addressSV = ('localhost', 12345)
+        self.To["text"] = "Conectando..."
+        self.client.connect(self.addressSV)
+
+    def SaidaTexto(self,texto):
+        self.ms1["text"] = texto
     
     def Reiniciar(self):
         pass
     
     def Play(self):
-        pass
+        self.client.send(1024)
+        self.pa = pyaudio.PyAudio()
+        self.stream = pyaudio.open(format=pyaudio.paInt16,
+                                   channels=2,
+                                   rate=44100
+                                   output=True)
+        while True:
+            self.data = self.client.recv(1024)
+            if not data:
+                break
+            self.stream.write(self.data)
 
     def Pause(self):
-        pass
+        self.stream.stop_stream()
+        self.stream.close()
 
 if __name__ == '__main__':
     root = tkinter.Tk()
