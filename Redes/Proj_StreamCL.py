@@ -71,6 +71,15 @@ class Aplic:
         self.addressSV = ('localhost', 12345)
         self.To["text"] = "Conectando..."
         self.client.connect(self.addressSV)
+        #self.client.bind()
+        self.To["text"] = "Conectado."
+        self.pa = pyaudio.PyAudio()
+        self.stream = self.pa.open(format=pyaudio.paInt16,
+                                   channels=2,
+                                   rate=44100,
+                                   output=True,
+                                   frames_per_buffer=1024)
+        self.stop = False
 
     def SaidaTexto(self,texto):
         self.ms1["text"] = texto
@@ -79,17 +88,16 @@ class Aplic:
         pass
     
     def Play(self):
-        self.client.send(1024)
-        self.pa = pyaudio.PyAudio()
-        self.stream = self.pa.open(format=self.pa.paInt16,
-                                   channels=2,
-                                   rate=44100,
-                                   output=True)
+        self.client.send('play'.encode())
+        self.To["text"] = "Reproduzindo..."
+        
         while True:
-            self.data = self.client.recv(1024)
-            if not self.data:
-                break
-            self.stream.write(self.data)
+            if not self.stop:
+                data = self.client.recv(1024)
+                if not data:
+                    break
+                self.stream.write(data)
+                self.stream.start_stream()
 
     def Pause(self):
         self.stream.stop_stream()
