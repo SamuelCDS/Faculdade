@@ -1,7 +1,9 @@
-import socket, pyaudio, tkinter
+import socket, pyaudio, tkinter, threading
 
 class Aplic:
     def __init__(self, master=None):
+        self.event = threading.Event()
+
         self.principal = tkinter.Frame(master)
         self.principal["pady"] = 60
         self.principal["padx"] = 100
@@ -79,27 +81,31 @@ class Aplic:
                                    rate=44100,
                                    output=True,
                                    frames_per_buffer=1024)
-        self.stop = False
+        
 
     def SaidaTexto(self,texto):
         self.ms1["text"] = texto
     
     def Reiniciar(self):
-        pass
+        self.client.send('Restart'.encode())
     
     def Play(self):
+        self.rodar = threading.Thread(target=self.Rodar, args=(self.event,))
+        self.rodar.start()
+    
+    def Rodar(self, event: threading.Event):
         self.client.send('play'.encode())
         self.To["text"] = "Reproduzindo..."
-        
         while True:
-            if not self.stop:
                 data = self.client.recv(1024)
-                if not data:
+                if not data or event.is_set():
                     break
                 self.stream.write(data)
                 self.stream.start_stream()
-
+    
     def Pause(self):
+        self.event.set()
+        self.client.send('Pause'.encode())
         self.stream.stop_stream()
         self.stream.close()
 
