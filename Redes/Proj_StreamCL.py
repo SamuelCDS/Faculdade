@@ -1,20 +1,34 @@
 import socket, pyaudio, tkinter, threading
+from tkinter import ttk
 
 class Aplic:
     def __init__(self, master=None):
         self.event = threading.Event()
 
         self.principal = tkinter.Frame(master)
-        self.principal["pady"] = 60
+        self.principal["pady"] = 50
         self.principal["padx"] = 100
         self.principal.pack(side="top")
         self.msg = tkinter.Label(self.principal, text="Stream de Áudio")
         self.msg["font"] = ("Arial", "14", "bold")
         self.msg.pack(side="top")
+
+        #Lista de musicas:
+        self.ls = tkinter.Frame(master)
+        self.ls["padx"] = 120
+        self.ls.pack()
+        self.lsT = tkinter.Label(self.ls, text="Selecione uma musica: ", font=('Arial', '10'))
+        self.lsT.pack(side="top")
+        self.lista = tkinter.StringVar()
+        self.combobox = ttk.Combobox(self.ls,textvariable=self.lista)
+        self.combobox["state"] = 'reandoly'
+        self.combobox.pack(fill=tkinter.X)
+        self.selecL = tkinter.Button(self.ls, text="Selecionar", command=self.selecM)
+        self.selecL.pack()
         
         #Saida de textos:
         self.textout = tkinter.Frame(master)
-        self.textout["padx"] = 30
+        self.textout["padx"] = 20
         self.textout.pack()
         self.To = tkinter.Label(self.textout, text="", font="Arial")
         self.To.pack(side="top")
@@ -49,7 +63,7 @@ class Aplic:
         
         #Botão para pausar a reprodução:
         self.ps = tkinter.Frame(master)
-        self.ps["pady"] = -100
+        self.ps["pady"] = 20
         self.ps["padx"] = 50
         self.ps.pack()
         self.pause = tkinter.Button(self.ps)
@@ -70,23 +84,30 @@ class Aplic:
         
         #Conexão com o servidor:
         self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.addressSV = ('localhost', 12345)
+        self.addressSV = ('localhost', 1234)
         self.To["text"] = "Conectando..."
         self.client.connect(self.addressSV)
-        #self.client.bind()
         self.To["text"] = "Conectado."
+
+        #Recebimento da lista de músicas e inserção na box:
+        self.LMusicas = self.client.recv(1024).decode().split('\n')
+        self.combobox["values"] = self.LMusicas
+        
+        #Inicialização do PyAudio:
         self.pa = pyaudio.PyAudio()
         self.stream = self.pa.open(format=pyaudio.paInt16,
                                    channels=2,
                                    rate=44100,
                                    output=True,
                                    frames_per_buffer=1024)
-        
-
-    def SaidaTexto(self,texto):
-        self.ms1["text"] = texto
+    
+    def selecM(self):
+        musica = self.lista.get()
+        self.client.send(musica.encode())
+        print(f"Música selecionada: {musica}")  
     
     def Reiniciar(self):
+        self.To["text"] = "Reiniciando música..."
         self.client.send('Restart'.encode())
     
     def Play(self):
@@ -96,18 +117,23 @@ class Aplic:
     def Rodar(self, event: threading.Event):
         self.client.send('play'.encode())
         self.To["text"] = "Reproduzindo..."
-        while True:
-                data = self.client.recv(1024)
+        data = self.client.recv(1024)
+        while data or not event.is_set():
                 if not data or event.is_set():
+                    self.stream.stop_stream()
+                    self.stream.close()
                     break
                 self.stream.write(data)
                 self.stream.start_stream()
+                data = self.client.recv(1024)
     
     def Pause(self):
         self.event.set()
         self.client.send('Pause'.encode())
+        self.To["text"] = "Pause."
         self.stream.stop_stream()
         self.stream.close()
+        self.pa.terminate()
 
 if __name__ == '__main__':
     root = tkinter.Tk()
