@@ -1,4 +1,4 @@
-import socket, pyaudio, tkinter, threading
+import socket, pyaudio, tkinter, threading, queue
 from tkinter import ttk
 
 class Aplic:
@@ -92,7 +92,7 @@ class Aplic:
         #Recebimento da lista de músicas e inserção na box:
         self.LMusicas = self.client.recv(1024).decode().split('\n')
         self.combobox["values"] = self.LMusicas
-        
+  
         #Inicialização do PyAudio:
         self.pa = pyaudio.PyAudio()
         self.stream = self.pa.open(format=pyaudio.paInt16,
@@ -102,40 +102,60 @@ class Aplic:
                                    frames_per_buffer=1024)
     
     def selecM(self):
-        musica = self.lista.get()
-        self.client.send(musica.encode())
-        print(f"Música selecionada: {musica}")  
+        if self.lista.get():
+            musica = self.lista.get()
+            self.client.sendall(musica.encode())
+            print(f"Música selecionada: {musica}")  
     
     def Reiniciar(self):
         self.To["text"] = "Reiniciando música..."
-        self.client.send('Restart'.encode())
+        self.client.sendall('Restart'.encode())
     
     def Play(self):
         self.rodar = threading.Thread(target=self.Rodar, args=(self.event,))
         self.rodar.start()
     
     def Rodar(self, event: threading.Event):
-        self.client.send('play'.encode())
+        self.client.sendall('Play'.encode())
         self.To["text"] = "Reproduzindo..."
-        data = self.client.recv(1024)
-        while data or not event.is_set():
-                if not data or event.is_set():
-                    self.stream.stop_stream()
-                    self.stream.close()
+        dataFila = queue.Queue()
+
+        def receive_data():
+            while True:
+                data = self.client.recv(1024)
+                if not data:
                     break
+                dataFila.put(data)
+        
+        # Inicia a thread para receber dados do servidor
+        receive_thread = threading.Thread(target=receive_data)
+        receive_thread.start()
+
+        # Reprodução contínua dos dados recebidos
+        while True:
+            if not dataFila.empty() or event.is_set():
+                self.stream.stop_stream()
+                break
+
+            try:
+                data = dataFila.get(timeout=0.1)  # Aguarda até 0.1 segundos por novos dados
                 self.stream.write(data)
                 self.stream.start_stream()
-                data = self.client.recv(1024)
+            except queue.Empty:
+                continue
+        
+        # Aguarda a conclusão da thread de recebimento de dados
+        receive_thread.join()
     
     def Pause(self):
-        self.event.set()
-        self.client.send('Pause'.encode())
+        self.client.sendall('Pause'.encode())
         self.To["text"] = "Pause."
         self.stream.stop_stream()
-        self.stream.close()
-        self.pa.terminate()
 
 if __name__ == '__main__':
     root = tkinter.Tk()
     Aplic(root)
     root.mainloop()
+    Aplic().client.close()
+    Aplic().stream.close()
+    
