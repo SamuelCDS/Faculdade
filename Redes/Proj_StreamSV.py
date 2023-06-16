@@ -12,7 +12,7 @@ class Server:
         musica = None
         event = threading.Event()
         tocarM = None
-        
+
         #Envio da lista de músicas:
         clien.sendall('\n'.join(os.listdir("/home/samuelcds/Músicas")).encode())
 
@@ -22,15 +22,15 @@ class Server:
             def playa(event: threading.Event):
                 #Envio da musica:
                 while True:
-                    if musica is None:
-                        return
+                    if not musica:
+                        break
                     arquivo = musica.readframes(1024)
                     stream.write(arquivo)
                     if not arquivo or event.is_set():
                         while True:
                             if not event.is_set():
                                 break
-            
+
             #Recebimento da musica desejada:
             selecao_encoded = clien.recv(1024)
             SelecM = selecao_encoded.decode()
@@ -40,11 +40,10 @@ class Server:
             direc = os.path.join("/home/samuelcds/Músicas", SelecM)
             musica = wave.open(direc, 'rb')
             stream = self.audio.open(format=self.audio.get_format_from_width(musica.getsampwidth()),
-                                        channels=musica.getnchannels(),
-                                            rate=musica.getframerate(),
-                                          output=True,
-                                        frames_per_buffer=1024,
-                                        output_device_index=self.audio.get_default_output_device_info()['index'])
+                                    channels=musica.getnchannels(),
+                                    rate=musica.getframerate(),
+                                    output=True,
+                                    output_device_index=self.audio.get_default_output_device_info()['index'])
 
             #Recebimento de comandos:
             while True:
@@ -79,16 +78,16 @@ class Server:
                     event.clear()
                     musica.rewind()
                     stream.start_stream()
-            
+
                 else:
                     event.set()
                     print(f"Comando para mudar música recebido: {cmdMusica}")
                     stream.stop_stream()
-                    stream.close()
-                    musica.close()
-                    event.clear()
+                    if musica:
+                        musica.close()
                     direc = os.path.join("/home/samuelcds/Músicas", cmdMusica)
                     musica = wave.open(direc, 'rb')
+                    event.clear()
                     stream.start_stream()
 
         except ConnectionResetError:
@@ -104,22 +103,21 @@ class Server:
                 self.audio.terminate()
             if musica:
                 musica.close()
-            
-    
+
     def start(self):
         #Iniciando servidor:
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.bind((self.host, self.port))
         self.server.listen(4)
         print('Servidor iniciado, aguardando conexões...')
-        
+
         while True:
             client, address_cl = self.server.accept()
             print('Cliente: ', address_cl, 'CONECTADO')
             eachCon = threading.Thread(target=self.EachCmdfor, args=(client,))
             eachCon.start()
-                
+
 if __name__ == '__main__':
-    server = Server('localhost', 1234)
+    server = Server('localhost', 12345)
     server.start()
     server.server.close()
