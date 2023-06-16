@@ -84,7 +84,7 @@ class Aplic:
 
         #Conexão com o servidor:
         self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.addressSV = ('localhost', 1234)
+        self.addressSV = ('localhost', 12345)
         self.To["text"] = "Conectando..."
         self.client.connect(self.addressSV)
         self.To["text"] = "Conectado."
