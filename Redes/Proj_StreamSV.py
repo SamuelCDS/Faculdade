@@ -25,6 +25,8 @@ class Server:
                     if not musica:
                         break
                     arquivo = musica.readframes(1024)
+                    if not arquivo:
+                        break
                     stream.write(arquivo)
                     if not arquivo or event.is_set():
                         while True:
@@ -42,8 +44,8 @@ class Server:
             stream = self.audio.open(format=self.audio.get_format_from_width(musica.getsampwidth()),
                                     channels=musica.getnchannels(),
                                     rate=musica.getframerate(),
-                                    output=True,
-                                    output_device_index=self.audio.get_default_output_device_info()['index'])
+                                    output=True
+                                    )
 
             #Recebimento de comandos:
             while True:
@@ -80,13 +82,16 @@ class Server:
                     stream.start_stream()
 
                 else:
-                    event.set()
                     print(f"Comando para mudar música recebido: {cmdMusica}")
                     stream.stop_stream()
                     if musica:
                         musica.close()
                     direc = os.path.join("/home/samuelcds/Músicas", cmdMusica)
                     musica = wave.open(direc, 'rb')
+                    stream = self.audio.open(format=self.audio.get_format_from_width(musica.getsampwidth()),
+                                            channels=musica.getnchannels(),
+                                            rate=musica.getframerate(),
+                                            output=True)
                     event.clear()
                     stream.start_stream()
 
