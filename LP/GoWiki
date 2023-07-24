@@ -1,0 +1,32 @@
+
+                                                História da Linguagem
+
+    Go é uma linguagem de programação tendo o inicio de seu desenvolvimento em 2007 por Robert Griesemer (trabalhou também
+no JavaScript), Rob Pike (Engenheiro de software e escritor, responsável pela lingiagem Limbo) e Ken Thompson (Cientista da
+computção, inventor da linguagem B), em 2008 tendo seu compilador idealizado e sendo oficialmente lançada em 2009 recebe
+atualizações até hoje (2023, com a versão 1.20) havendo também implementações para Windows, Mac OS X, Linux e FreeBSD.
+
+    A linguagem Go foi criada devido às constantes frustrações causadas pela complexidade nescessária para desenvolver um
+servidor utilizando linguagens como C, C++ e Java, além da universalização dos multiprocessadores que poucas linguagens
+ofereciam uma maneira eficiente e segura para programa-los. Foi levantada a questão de quais eram os principais problemas
+para desenvolver uma linguagem que utilizasse algum tipo de simultaneidade ou paralelismo, gerande várias discussões onde
+Go surgiu. Go oferece liberdade para os programadores escolherem com facilidade, segurança e eficiência entre um estilo
+Python e JavaScript em vez de C++ ou Java, abordando questões linguísticas, um sistema de tipos robusto mas leve; coleta de
+lixo e simultaneidade; especificação de dependência rígida e etc.
+
+    O mascote e o logotipo gotam criados por Renée French (criador da Glenda, o coelho do filme Plano 9 do Espaço Sideral)
+Gopher, foi apresentado pela primeira vez em 2016. O apelido 'Golang' se origina do nome do site golang.org, pois não exis-
+tia o domínio .dev.
+
+                                                        Projeto
+
+    A linguagem Go é utilizada internamente no Google, e segue crescendo inclusive no Brasíl, senfo utilizada por grandes
+empresas como: iFood, Mercado Livre, Magazine Luiza, OLX Brasíl, PagSeguro, Walmart e várias outras. E possível a utili-
+zação das linguagens Go e C juntas, apesar na nescessidade de uma interface e cuidado pois pode ser melhor usar uma
+biblioteca do C para resolver o problema do que uni-las pois, vincular C ao código Go desiste da memória propriedades de
+segurança e gerenciamento de pilha que o Go fornece.
+
+                                                Referências Bibliográficas
+
+.https://go.dev/doc/devel/release - Consultada em 20/07/2023.
+.https://go.dev/doc/faq - Consultada em 20/07/2023.
