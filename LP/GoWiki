@@ -26,6 +26,62 @@ zação das linguagens Go e C juntas, apesar na nescessidade de uma interface e 
 biblioteca do C para resolver o problema do que uni-las pois, vincular C ao código Go desiste da memória propriedades de
 segurança e gerenciamento de pilha que o Go fornece.
 
+                                                    Construtores
+.Packages: Os pacotes são uma coleção de códigos que são agrupados juntos para realizar uma tarefa específica.
+.Imports: Os Imports são utilizados para habilitar recursos contidos em uma biblioteca.
+.Functions: As funções são blocos de código que podem ser chamados repetidamente.
+.Variables: As variáveis são espaços de memória onde os dados são armazenados.
+.Constants: As constantes são valores que não podem ser alterados.
+.Structs: As estruturas são tipos de dados que podem conter vários campos.
+.Arrays: Os arrays são tipos de dados que podem conter um número fixo de elementos.
+.Slices: As slices são tipos de dados que podem conter um número variável de elementos.
+.Maps: Os maps são tipos de dados que podem armazenar pares de chaves e valores.
+.Pointers: Os ponteiros são referências a outros objetos.
+.Interfaces: As interfaces são contratos que definem um conjunto de métodos que um objeto deve implementar.
+.Channels: Os canais são uma forma de comunicação entre goroutines.
+.Chan: Atalho para as routines.
+.Goroutines: As goroutines são linhas de execução independentes que podem ser executadas em paralelo.
+.Concurrency: A concorrência é a capacidade de executar várias tarefas ao mesmo tempo.
+.Parallelism: O paralelismo é a capacidade de executar várias tarefas ao mesmo tempo na mesma linha de execução.
+.Iteração: Na linguagem Go o método para repetir um precedimenfo é o "for".
+
+
+                                                    Legibilidade
+
+    A linguagem Go possui uma sintaxe mais clara e concisa que outras linguagens, o que facilita a compreensão e escrita
+dos códigos. A legibilidade que a linguagem Go apresenta é uma forte característica; a formatação padrão herdada de outras linguagens como Java e C\C++ a tornam até mesmo uma linguagem de rápido aprendizado se os usuários experimentarem migrar de tecnologia.
+
+                                                Capacidade de Escrita
+
+    A linguagem Go com sua clara e concisa facilitam a escrita do código e ajudam seus usuários à escreverem de forma
+eficaz, incentivando a escrita limpa e o constante tratamento de erros forçadamente.
+
+                                                    Confiabilidade
+
+    A linguagem Go é projetado para ser uma linguagem confiável. Ele possui um coletor de lixo (garbage collector)
+eficiente, que gerencia automaticamente a alocação e liberação de memória; além disso, Go possui uma tipagem estática forte, o que reduz a probabilidade de erros de tipo em tempo de execução; a linguagem também oferece suporte nativo a teste e possui um sistema de tratamento de erros robusto.
+
+                                                        Custo
+
+    Go é uma linguagem de programação de código aberto e gratuita. Não há custos associados à obtenção e utilização da
+linguagem. Além disso, Go é conhecido por sua eficiência em termos de uso de recursos, o que pode reduzir os custos de infraestrutura em projetos de larga escala.
+
+                                                        Exemplos
+
+package main
+
+import "fmt"
+
+func printar(){
+    fmt.Println("Olá mundo!")
+    continue
+}
+
+func main(){
+    for{
+        printar()
+    }
+
                                                 Referências Bibliográficas
 
 .https://go.dev/doc/devel/release - Consultada em 20/07/2023.
