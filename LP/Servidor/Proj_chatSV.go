@@ -14,7 +14,7 @@ func handleClient(client Client, clients map[net.Conn]Client, messages chan<- st
 	buffer := make([]byte, 1024)
 
 	// Enviar mensagem de boas-vindas
-	client.conn.Write([]byte("Bem-vindo ao chat!\nDigite seu nome de usuário: "))
+	client.conn.Write([]byte("Bem-vindo ao chat!\nLogado como: "))
 
 	bytesRead, err := client.conn.Read(buffer)
 	if err != nil {
