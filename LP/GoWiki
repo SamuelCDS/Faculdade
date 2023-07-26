@@ -9,7 +9,7 @@ Matrícula - 211010388
     Go é uma linguagem de programação tendo o inicio de seu desenvolvimento em 2007 por Robert Griesemer (trabalhou também
 no JavaScript), Rob Pike (Engenheiro de software e escritor, responsável pela lingiagem Limbo) e Ken Thompson (Cientista da
 computção, inventor da linguagem B), em 2008 tendo seu compilador idealizado e sendo oficialmente lançada em 2009 recebe
-atualizações até hoje (2023, com a versão 1.20) havendo também implementações para Windows, Mac OS X, Linux e FreeBSD.
+atualizações até hoje (2023, com a versão 1.20) havendo também implementações para Windows, Mac OS X, Linux e FreeBSD e segue crescendo no Brasil.
 
     A linguagem Go foi criada devido às constantes frustrações causadas pela complexidade nescessária para desenvolver um
 servidor utilizando linguagens como C, C++ e Java, além da universalização dos multiprocessadores que poucas linguagens
@@ -26,15 +26,114 @@ existia o domínio .dev para sua utilização.
                                                         Projeto
 
     Se tratando de premissas para o desenvolvimentoem em Go, a sua simplicidade, sua eficiência, a sua Segurança, a sua
-biblioteca padrão rica e o suporte à concorrência dão os motivos suficientes para sua escolha. A linguagem Go foi projetada para ser uma lingiagemde programação simples e fácil de se usar e de entenderem e colaborarem com os projetos, a linguagem evita sobrecarregar o programador com muitas opções; Go é conhecida como uma linguagem eficiente pela comunidade, adequada para aplicativos de alto desempenho por sua compilação rápida e execução veloz; seu suporte nativo para a concorrência o que facilita, o desenvolvimento de programas paralelos e concorrentes, sua sintaxe "goroutine" e a sua primitiva "Channel" tornam mais fácil de escrever código concorrente de forma segura; ela foi projetada já visando a segurança, ela se dispõe de recursos para evitar condições de corrida e seu sistema de tipos ajuda à previnir a ocorrência de erros durante a compilação; Go possui uma biblioteca padrão rica, que abrange muitas funcionalidades comuns necessárias no desenvolvimento de aplicativos, como manipulação de strings, E/S, criptografia e muito mais.
+biblioteca padrão rica e o suporte à concorrencia dão os motivos suficientes para sua escolha. A linguagem Go foi projetada para ser uma linguagem programação simples e fácil de se usar e de entenderem e colaborarem com os projetos, a linguagem evita sobrecarregar o programador com muitas opções; Go é conhecida como uma linguagem eficiente pela comunidade, adequada para aplicativos de alto desempenho por sua compilação rápida e execução veloz; seu suporte nativo para a concorrência o que facilita, o desenvolvimento de programas paralelos e concorrentes, sua sintaxe "goroutine" e a sua primitiva "Channel" tornam mais fácil de escrever código concorrente de forma segura; ela foi projetada já visando a segurança, ela se dispõe de recursos para evitar condições de corrida e seu sistema de tipos ajuda à previnir a ocorrência de erros durante a compilação; Go possui uma biblioteca padrão rica, que abrange muitas funcionalidades comuns necessárias no desenvolvimento de aplicativos, como manipulação de strings, E/S, criptografia e muito mais.
 
     Acerca dos usuários, podem ser mencionados como Usuário final e o usuário do sistema. O usuário final é aquele que
 interage diretamente com o aplicativo ou sistema desenvolvido, eles são os beneficiários finais das funcionalidades fornecidas pelo software; ao qual se deve prestar atenção para forncer uma boa experiência. O usuário do sistema é o desenvolvedor, mantenedor ou administrador que trabalha diretamente com a linguagem e com o sistema; se torna essêncial fornecer par essa comunidade uma interface limpa e documentada para que possam entender e utilizar suas funcionalidades e tem se tornado cada vez mais popular.
 
-    Sobre o domínio da linguagem, também conhecida como Lógica de negócios, representa as regras e os procedimentos
-essenciais para o funcionamento do programa; nos projetos Go é essêncial separar claramente a lógica de negócios da infraestrutura e das preocupações de interface do usuário; a fim de separar a lógica de negócios, é sugerido utilizar padrões de design como por exemplo o Domain-Driven Design (DDD) incentivando a criação de um modelo de domínio rico e semântico, refletindo as entidades, agregados e servilos fundamentais para o funcionamento do sistema; durante a estruturação do projeto Go é uma boa prática é criar pacotes específicos para a lógica de negócios, isolando-a dos detalhes de implementação e da interação com a interface do usuário.
+    Go apesar de permitir um estilo de programação semelhante à POO, ela é mais forte em implementação de programação
+concorrente. Sobre o domínio da linguagem, também conhecida como Lógica de negócios, representa as regras e os procedimentos essenciais para o funcionamento do programa; nos projetos Go é essêncial separar claramente a lógica de negócios da infraestrutura e das preocupações de interface do usuário; a fim de separar a lógica de negócios, é sugerido utilizar padrões de design como por exemplo o Domain-Driven Design (DDD) incentivando a criação de um modelo de domínio rico e semântico, refletindo as entidades, agregados e servilos fundamentais para o funcionamento do sistema; durante a estruturação do projeto Go é uma boa prática é criar pacotes específicos para a lógica de negócios, isolando-a dos detalhes de implementação e da interação com a interface do usuário.
 
 *Domain-Driven Design: “É um conjunto de princípios com foco em domínio, exploração de modelos de formas criativas e definir e falar a linguagem Ubíqua, baseado no contexto delimitado.”
+
+-Empresas no Brasil que usam Go:
+99 Táxis
+Acesso
+AStar
+Astrolink
+B2W
+Data da beleza
+Bemobi
+Benefício Fácil
+Bexs - um banco forex
+BoaCompra
+Catho
+CloudWalk - uma plataforma de pagamento aberta
+Coderockr
+Condutor
+Conta Azul
+Cora
+Software global DB1
+Dafiti
+Entrega muito
+Daki
+DAXPER
+Dinamize
+Dito
+Dropadev
+Carros fáceis
+Emprego Ligado
+Estratégia Concursos
+Evento
+Everymind
+Finanças 360
+Corrigir pagamento
+Flaut
+Fluido
+FourTwo
+Fundamentei
+GissOnline
+Globo.com
+Grupo Bandeirantes
+Grupo SBF
+Hash
+Hurb
+Hubcash
+iFood
+Em Loco
+Envolve
+IQ Escolhas Inteligentes
+isaac
+Jexia
+Jusbrasil
+Koli
+Levpay
+Loggi
+M4U
+MadeiraMadeira
+Revista Luiza
+Mendélicos
+Mercado Livre
+Meu Astro
+Moip Pagamentos
+Mosaico - Zoom, Buscapé e Bondfaro.
+MundiPagg
+Soluções comerciais Neoway
+Newcore
+Nic.br
+Nuveo
+Olist
+OLX Brasil
+Abrir Vista Global
+OPLEN
+Pagar.me
+Pagro
+PagSeguro
+PicPay
+Pismo
+Polícia Militar do Estado de Minas Gerais
+PowerSystem-TI
+Rednaxel
+Resultados Digitais
+Revisor
+Riocard Tecnologia da Informação
+Sensedia
+Sage Brasil
+ServiceNet
+SiBBr.gov.br
+SumUp
+Pagamentos de pedra
+Studio Sol
+Sincronização
+TOTVS
+TraiveFinance
+TC Investimentos
+Ulife
+Unico
+Universo Online
+VivaReal
+Walmart
+Zup Innovation
 
                                                     Construtores
 
@@ -46,7 +145,7 @@ essenciais para o funcionamento do programa; nos projetos Go é essêncial separ
 
 .Variables: As variáveis são espaços de memória onde os dados são armazenados; não é nescessária a declaração com tipo, pode ser feito com o valor diretamente.
 
-.Métodos: São funlões que são aplicadas à um argumento receptor, sendo nescessária a criação de um método usando tipos especificados, diferentes das definições da linguagem.
+.Métodos: São funções que são aplicadas à um argumento receptor, sendo nescessária a criação de um método usando tipos especificados, diferentes das definições da linguagem.
 
 .Constants: As constantes são valores que não são alterados ao decorrer do código.
 
@@ -92,17 +191,17 @@ dos códigos. A legibilidade que a linguagem Go apresenta é uma forte caracter�
 
 .Capacidade de Escrita
     Essa forte característica em Go se deve à sua ortogonalidade e simplicidade que é dada através da facilidade de
-entendimento dos códigos curtos, que cumprem sua função sem nescessitar de muitas linhas em relação ao Java e ao C; ela disponibiliza o "go", "select" e o "make", tipos primitivos que formam uma rotina concorrente através de canais; Go é capaz de realizar abstração de dados mesmo não sendo orientada à objetos através das structs de tipos, que funciona de maneira semelhante; Go é capaz de associar variáveis e valores sem a nescessidade de celarar tipos através do construtor ":=" (exceto em Metodos); Go possui outra função que possui um efeito inverso ao "break" em C ("fallthrough" (queda)), o efeito se ocorre ao ser declarado switch e case em Go, que não são resolvidos em cascata, e o utiliza o fallthrough apenas quando for necessário.
+entendimento dos códigos curtos, que cumprem sua função sem necessitar de muitas linhas em relação ao Java e ao C; ela disponibiliza o "go", "select" e o "make", tipos primitivos que formam uma rotina concorrente através de canais; Go é capaz de realizar abstração de dados mesmo não sendo orientada à objetos através das structs de tipos, que funciona de maneira semelhante; Go é capaz de associar variáveis e valores sem a nescessidade de celarar tipos através do construtor ":=" (exceto em Metodos); Go possui outra função que possui um efeito inverso ao "break" em C ("fallthrough" (queda)), o efeito se ocorre ao ser declarado switch e case em Go, que não são resolvidos em cascata, e o utiliza o fallthrough apenas quando for necessário.
 
 .Confiabilidade
-    Se tratando de uma lingiagem fortemente tipada, Go em tempo de compilação realiza as checagens, para que não ocorram
-bugs durante a execução do código; ao utilizar o "Defer", "Panic" e "Recover" ela visa proteger o código em aplicações complexas como sistemas de segurança de cometer bugs; Go possibilita o aliasing de variáveis através do uso de ponteiros.
+    Se tratando de uma linguagem fortemente tipada, Go em tempo de compilação realiza as checagens, para que não ocorram
+bugs durante a execução do código; ao utilizar o "Defer", "Panic" e "Recover" ela visa proteger o código em aplicações complexas como sistemas de segurança de cometer bugs além da coleta de lixo (Garbage collector); Go possibilita o aliasing de variáveis através do uso de ponteiros.
 
 .Custos e outros
     Por sua semelhança com C, simplicidade e praticidade e boa documentação na comunidade, contribui para o aprendizado de
-desenvolvedores; por não nescessitar de grandes códigos para o desenvolvimento das aplicações, menos horas serão gastas; a compilação é feita de forma rápida diminuindo seu custo; com o recurso de "routines" recursos computacionais são economizados, tendo sua velocidade facilmente comparada com a linguagem C; tendo suporte para vários sistemas operacionais;  bugs são corrigidos com pouco tempo devido a ortogonalidade e legibilidade que ela possui; Go é altamente recomendada para sistemas de segurança apesar de ser fraco para sistemas de tempo real como análise de tráfego por exemplo.
-    Go é uma linguagem extremamente portavel entre sistemas operacionais; podendo ser utilizada para diversos tipos de
-aplicação.
+desenvolvedores; por não necessitar de grandes códigos para o desenvolvimento das aplicações, menos horas serão gastas; a compilação é feita de forma rápida diminuindo seu custo; com o recurso de "routines" recursos computacionais são economizados, tendo sua velocidade facilmente comparada com a linguagem C; tendo suporte para vários sistemas operacionais;  bugs são corrigidos com pouco tempo devido a ortogonalidade e legibilidade que ela possui; Go é altamente recomendada para sistemas de segurança apesar de ser fraco para sistemas de tempo real como análise de tráfego por exemplo.
+    Go é uma linguagem extremamente portável entre sistemas operacionais (Windows, Linux ou MacOS); podendo ser utilizada
+para diversos tipos de aplicação (dos apps androids às paginas web).
 
 
                                                         Exemplos
@@ -132,9 +231,6 @@ import(
 -Exemplo de implementação do if/else:
 1.
 package main
-
-/ / If e Else
-
 func main(){
    if 16 >= 40 {
       return true
@@ -191,7 +287,7 @@ func main(){
    fmt.Println(msg)
 }
 
-Exemplo para type struct:
+-Exemplo para type struct:
 package main
 import "fmt"
 type Pessoa struct{
@@ -200,8 +296,8 @@ type Pessoa struct{
 }
 func main(){
     p1 = Pessoa{
-    nome: "João",
-    idade: 24,
+        nome: "João",
+        idade: 24,
     }
 }
 
@@ -261,9 +357,8 @@ func secunda(i int){
    segunda(i+1)
 }
 
-                                          Comparação entre C/C++, Go e Java com Bubble sort
+                                                Comparação entre C/C++, Go e Java
 -C/C++:
-1.
 void bubble_sort (int vetor[], int n) {
     int k, j, aux;
 
@@ -332,5 +427,7 @@ func main() {
 
 .https://go.dev/doc/devel/release - Consultada em 20/07/2023.
 .https://go.dev/doc/faq - Consultada em 20/07/2023.
+.https://github.com/golang/go/wiki/GoUsers - Consultada em 20/07/2023.
 .https://fullcycle.com.br/domain-driven-design/ - Consultada em 25/07/2023.
+.https://lpunb.fandom.com/wiki/Go_-_Grupo_2_-_2019/2#Construtores - Consultada em 25/07/2023.
 .https://go.dev/blog/survey2020-results - Consultada em 25/07/2023.
