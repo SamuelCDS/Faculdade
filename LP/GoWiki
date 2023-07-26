@@ -15,74 +15,318 @@ Python e JavaScript em vez de C++ ou Java, abordando questões linguísticas, um
 lixo e simultaneidade; especificação de dependência rígida e etc.
 
     O mascote e o logotipo gotam criados por Renée French (criador da Glenda, o coelho do filme Plano 9 do Espaço Sideral)
-Gopher, foi apresentado pela primeira vez em 2016. O apelido 'Golang' se origina do nome do site golang.org, pois não exis-
-tia o domínio .dev.
+Gopher, foi apresentado pela primeira vez em 2016. O apelido 'Golang' se origina do nome do site golang.org, pois não
+existia o domínio .dev para sua utilização.
 
                                                         Projeto
 
-    A linguagem Go é utilizada internamente no Google, e segue crescendo inclusive no Brasíl, senfo utilizada por grandes
-empresas como: iFood, Mercado Livre, Magazine Luiza, OLX Brasíl, PagSeguro, Walmart e várias outras. E possível a utili-
-zação das linguagens Go e C juntas, apesar na nescessidade de uma interface e cuidado pois pode ser melhor usar uma
-biblioteca do C para resolver o problema do que uni-las pois, vincular C ao código Go desiste da memória propriedades de
-segurança e gerenciamento de pilha que o Go fornece.
+    Se tratando de premissas para o desenvolvimentoem em Go, a sua simpliidade, sua eficiência, a sua Segurança, a sua
+biblioteca padrão rica e o suporte à concorrencia dão os motivos suficientes para sua escolha. A linguagem Go foi projetada para ser uma lingiagemde programação simples e fácil de se usar e de entenderem e colaborarem com os projetos, a linguagem evita sobrecarregar o programador com muitas opções; Go é conhecida como uma linguagem eficiente pela comunidade, adequada para aplicativos de alto desempenho por sua compilação rápida e execução veloz; seu suporte nativo para a concorrência o que facilita, o desenvolvimento de programas paralelos e concorrentes, sua sintaxe "goroutine" e a sua primitiva "Channel" tornam mais fácil de escrever código concorrente de forma segura; ela foi projetada já visando a segurança, ela se dispõe de recursos para evitar condições de corrida e seu sistema de tipos ajuda à previnir a ocorrência de erros durante a compilação; Go possui uma biblioteca padrão rica, que abrange muitas funcionalidades comuns necessárias no desenvolvimento de aplicativos, como manipulação de strings, E/S, criptografia e muito mais.
+
+    Acerca dos usuários, podem ser mencionados como Usuário final e o usuário do sistema. O usuário final é aquele que
+interage diretamente com o aplicativo ou sistema desenvolvido, eles são os beneficiários finais das funcionalidades fornecidas pelo software; ao qual se deve prestar atenção para forncer uma boa experiência. O usuário do sistema é o desenvolvedor, mantenedor ou administrador que trabalha diretamente com a linguagem e com o sistema; se torna essêncial fornecer par essa comunidade uma interface limpa e documentada para que possam entender e utilizar suas funcionalidades e tem se tornado cada vez mais popular.
+
+    Sobre o domínio da linguagem, também conhecida como Lógica de negócios, representa s regras e os procedimentos
+essenciais para o funcionamento do programa; nos projetos Go é essêncial separar claramente a lógica de negócios da infraestrutura e das preocupações de interface do usuário; a fim de separar a lógica de negócios, é sugerido utilizar padrões de design como por exemplo o Domain-Driven Design (DDD) incentivando a criação de um modelo de domínio rico e semântico, refletindo as entidades, agregados e servilos fundamentais para o funcionamento do sistema; durante a estruturação do projeto Go é uma boa prática é criar pacotes específicos para a lógica de negócios, isolando-a dos detalhes de implementação e da interação com a interface do usuário.
+
+*Domain-Driven Design: “É um conjunto de princípios com foco em domínio, exploração de modelos de formas criativas e definir e falar a linguagem Ubíqua, baseado no contexto delimitado.”
 
                                                     Construtores
+
 .Packages: Os pacotes são uma coleção de códigos que são agrupados juntos para realizar uma tarefa específica.
+
 .Imports: Os Imports são utilizados para habilitar recursos contidos em uma biblioteca.
+
 .Functions: As funções são blocos de código que podem ser chamados repetidamente.
-.Variables: As variáveis são espaços de memória onde os dados são armazenados.
-.Constants: As constantes são valores que não podem ser alterados.
+
+.Variables: As variáveis são espaços de memória onde os dados são armazenados; não é nescessária a declaração com tipo, pode ser feito com o valor diretamente.
+
+.Métodos: São funlões que são aplicadas à um argumento receptor, sendo nescessária a criação de um método usando tipos especificados, diferentes das definições da linguagem.
+
+.Constants: As constantes são valores que não são alterados ao decorrer do código.
+
 .Structs: As estruturas são tipos de dados que podem conter vários campos.
-.Arrays: Os arrays são tipos de dados que podem conter um número fixo de elementos.
-.Slices: As slices são tipos de dados que podem conter um número variável de elementos.
-.Maps: Os maps são tipos de dados que podem armazenar pares de chaves e valores.
+
+.Arrays: Os arrays são estruturas que podem conter um número fixo de elementos para guardar e organiza-los.
+
+.Slices: As slices são referências para arrays que somente se visualiza um trecho.
+
+.Maps: Os maps são tipos de dados que podem armazenar pares de chaves e valores relacionando-os.
+
 .Pointers: Os ponteiros são referências a outros objetos.
+
 .Interfaces: As interfaces são contratos que definem um conjunto de métodos que um objeto deve implementar.
-.Channels: Os canais são uma forma de comunicação entre goroutines.
-.Chan: Atalho para as routines.
-.Goroutines: As goroutines são linhas de execução independentes que podem ser executadas em paralelo.
+
+.Channels: Os canais são uma forma de comunicação entre goroutines; canal digitado que pode enviar e receber valores através do operador "<-".(Chan)
+
+.Goroutines: As goroutines são Threads ou linhas de execução independentes que podem ser executadas em paralelamente.
+
+.Make: Se responsabiliza pela inicialização de um canal.
+
 .Concurrency: A concorrência é a capacidade de executar várias tarefas ao mesmo tempo.
-.Parallelism: O paralelismo é a capacidade de executar várias tarefas ao mesmo tempo na mesma linha de execução.
-.Iteração: Na linguagem Go o método para repetir um precedimenfo é o "for".
 
+.Parallelism: O paralelismo é a capacidade de executar várias tarefas ao mesmo tempo porém, na mesma linha de execução.
 
-                                                    Legibilidade
+.go: Realiza a execução da rotina.
 
+.Select: Responsável por permitir que uma goroutine aguarde várias operações de comunicação; bloqueia até que um dos seus casos possa ser executado.
+
+.Range: Utilizado para repetição, podendo ser utilizados em soma, somatórios e demais exemplos; sendo utilizado no for é nescessário a especificação do valor em forma de vetor e o valor inicial e final.
+
+.Defer: Função interna que atrasa a execução de uma função até que seja retornada.
+
+.Panic: Função interna que interrompe o fluxo e entra em pânico caso ocorra divergências com.
+
+.Recover: Função interna que recupera o controle de uma goroutine em pânico.
+
+                                        Critérios de avaliação da linguagem
+
+.Legibilidade
     A linguagem Go possui uma sintaxe mais clara e concisa que outras linguagens, o que facilita a compreensão e escrita
-dos códigos. A legibilidade que a linguagem Go apresenta é uma forte característica; a formatação padrão herdada de outras linguagens como Java e C\C++ a tornam até mesmo uma linguagem de rápido aprendizado se os usuários experimentarem migrar de tecnologia.
+dos códigos. A legibilidade que a linguagem Go apresenta é uma forte característica; a formatação padrão herdada de outras linguagens como Java e C\C++ a tornam até mesmo uma linguagem de rápido aprendizado se os usuários experimentarem migrar de tecnologia. Na Linguagem Go as instruções possuem semântica simples; comandos como for, if/else e switch/case podem ser usados com facilidade; acerca dos tipos de dados, Go dispõe de inteiros, flutuantes, double, booleanos e string char.
 
-                                                Capacidade de Escrita
+.Capacidade de Escrita
+    Essa forte característica em Go se deve à sua ortogonalidade e simplicidade que é dada através da facilidade de
+entendimento dos códigos curtos, que cumprem sua função sem nescessitar de muitas linhas em relação ao Java e ao C; ela disponibiliza o "go", "select" e o "make", tipos primitivos que formam uma rotina concorrente através de canais; Go é capaz de realizar abstração de dados mesmo não sendo orientada à objetos através das structs de tipos, que funciona de maneira semelhante; Go é capaz de associar variáveis e valores sem a nescessidade de celarar tipos através do construtor ":=" (exceto em Metodos); Go possui outra função que possui um efeito inverso ao "break" em C ("fallthrough" (queda)), o efeito se ocorre ao ser declarado switch e case em Go, que não são resolvidos em cascata, e o utiliza o fallthrough apenas quando for necessário.
 
-    A linguagem Go com sua clara e concisa facilitam a escrita do código e ajudam seus usuários à escreverem de forma
-eficaz, incentivando a escrita limpa e o constante tratamento de erros forçadamente.
+.Confiabilidade
+    Se tratando de uma lingiagem fortemente tipada, Go em tempo de compilação realiza as checagens, para que não ocorram
+bugs durante a execução do código; ao utilizar o "Defer", "Panic" e "Recover" ela visa proteger o código em aplicações complexas como sistemas de segurança de cometer bugs; Go possibilita o aliasing de variáveis através do uso de ponteiros.
 
-                                                    Confiabilidade
+.Custos e outros
+    Por sua semelhança com C, simplicidade e praticidade e boa documentação na comunidade, contribui para o aprendizado de
+desenvolvedores; por não nescessitar de grandes códigos para o desenvolvimento das aplicações, menos horas serão gastas; a compilação é feita de forma rápida diminuindo seu custo; com o recurso de "routines" recursos computacionais são economizados, tendo sua velocidade facilmente comparada com a linguagem C; tendo suporte para vários sistemas operacionais;  bugs são corrigidos com pouco tempo devido a ortogonalidade e legibilidade que ela possui; Go é altamente recomendada para sistemas de segurança apesar de ser fraco para sistemas de tempo real como análise de tráfego por exemplo.
+    Go é uma linguagem extremamente portavel entre sistemas operacionais; podendo ser utilizada para diversos tipos de
+aplicação.
 
-    A linguagem Go é projetado para ser uma linguagem confiável. Ele possui um coletor de lixo (garbage collector)
-eficiente, que gerencia automaticamente a alocação e liberação de memória; além disso, Go possui uma tipagem estática forte, o que reduz a probabilidade de erros de tipo em tempo de execução; a linguagem também oferece suporte nativo a teste e possui um sistema de tratamento de erros robusto.
-
-                                                        Custo
-
-    Go é uma linguagem de programação de código aberto e gratuita. Não há custos associados à obtenção e utilização da
-linguagem. Além disso, Go é conhecido por sua eficiência em termos de uso de recursos, o que pode reduzir os custos de infraestrutura em projetos de larga escala.
 
                                                         Exemplos
+-Exemplos de abertura de Package:
+1.
+package main
 
+2.
+package greet
+
+-Exemplos de importação de bibliotecas:
+1.
 package main
 
 import "fmt"
+import "net"
+import "github.com/yourbasic/graph"
 
-func printar(){
-    fmt.Println("Olá mundo!")
-    continue
-}
+2.
+package main
+import(
+        "fmt"
+        "net"
+        "github.com/yourbasic/graph"
+    )
+
+-Exemplo de implementação do if/else:
+1.
+package main
+
+/ / If e Else
 
 func main(){
-    for{
-        printar()
+   if 16 >= 40 {
+      return true
+   }
+   else {
+      return false
+  }
+}
+
+-Exemplo de atribuição de variável e switch:
+1.
+package main
+import "fmt"
+number := 25
+func main(){
+    switch(number){
+        case 20:
+            fmt.Print("Esse número é o 20")
+        case 25:
+            fmt.Print("Esse número é o 25")
     }
+}
+
+-Exemplos de uso do for:
+1.
+package main
+import "fmt"
+func main(){
+    var somatorio int = 0
+    for i := 1; i <= 16; i += 1{
+        soma += 1
+    }
+}
+
+2.
+package main
+import "fmt"
+func main(){
+    var contador int = 0
+    for{
+        contador += 1
+        fmt.Println(contador)
+    }
+}
+
+- Exemplo de criação de uma rotina:
+1.
+package main
+import "fmt"
+func main(){
+   menssagens := make(chan string)
+   go func() { menssagens <- "ping" }()
+   msg := <-menssagens
+   fmt.Println(msg)
+}
+
+Exemplo para type struct:
+package main
+import "fmt"
+type Pessoa struct{
+    nome string
+    idade int
+}
+func main(){
+    p1 = Pessoa{
+    nome: "João",
+    idade: 24,
+    }
+}
+
+-Exemplo de implementação do fallthrough:
+1.
+package main
+import "fmt"
+func main(){
+   switch 6 {
+   case 5:
+      fmt.Println("5")
+   case 6:
+      fmt.Println("6")
+      fallthrough
+   case 7:
+      fmt.Println("7")
+   }
+}
+
+-Exemplo de aliasing:
+1.
+import novafmt "fmt"
+func main(){
+   x := 9
+   var px *int = &x
+   novafmt.Printf("Valor de X: %d\n", x)
+   novafmt.Printf("Valor de PX: %d\n", *px)
+}
+
+-Exemplo de exceções:
+1.
+package main
+import "fmt"
+func main(){
+   fmt.Println("Executando funcao...")
+   f()
+   fmt.Println("Retornou funcao.")
+}
+
+func funcao(){
+   defer func(){
+   if r := recover(); r != nil{
+      fmt.Println("Recuperação com recover em funcao", r)
+      }
+   }()
+   fmt.Println("Executando segunda.")
+   segunda(0)
+   fmt.Println("Retorno de segunda.")
+}
+func secunda(i int){
+   int i>3{
+      fmt.Println("Entrou")
+      panic(fmt.Sprintf("%v", i)
+   }
+   defer dmt.Println("Atrasada em segunda", i)
+   fmt.Println("Executando normalmente da segunda", i)
+   segunda(i+1)
+}
+
+                                          Comparação entre C/C++, Go e Java com Bubble sort
+-C/C++:
+1.
+void bubble_sort (int vetor[], int n) {
+    int k, j, aux;
+
+    for (k = 1; k < n; k++) {
+        printf("\n[%d] ", k);
+
+        for (j = 0; j < n - 1; j++) {
+            printf("%d, ", j);
+
+            if (vetor[j] > vetor[j + 1]) {
+                aux          = vetor[j];
+                vetor[j]     = vetor[j + 1];
+                vetor[j + 1] = aux;
+            }
+        }
+    }
+}
+
+-Java:
+public static void main(String args[]){
+	int[] vet = {8, 9, 3, 5, 1};
+	int aux = 0;
+	int i = 0;
+
+	System.out.println("Vetor desordenado: ");
+	for(i = 0; i<5; i++){
+		System.out.println(" "+vet[i]);
+	}
+	System.out.println(" ");
+
+	for(i = 0; i<5; i++){
+		for(int j = 0; j<4; j++){
+			if(vet[j] > vet[j + 1]){
+				aux = vet[j];
+				vet[j] = vet[j+1];
+				vet[j+1] = aux;
+			}
+		}
+	}
+	System.out.println("Vetor organizado:");
+	for(i = 0; i<5; i++){
+		System.out.println(" "+vet[i]);
+	}
+}
+
+-Go:
+package main
+import "fmt"
+func BubbleSort(array[] int)[]int {
+   for i:=0; i< len(array)-1; i++ {
+      for j:=0; j < len(array)-i-1; j++ {
+         if (array[j] > array[j+1]) {
+            array[j], array[j+1] = array[j+1], array[j]
+         }
+      }
+   }
+   return array
+}
+func main() {
+   array:= []int{11, 14, 3, 8, 18, 17, 43};
+   fmt.Println(BubbleSort(array))
+}
+
 
                                                 Referências Bibliográficas
 
 .https://go.dev/doc/devel/release - Consultada em 20/07/2023.
 .https://go.dev/doc/faq - Consultada em 20/07/2023.
+.https://fullcycle.com.br/domain-driven-design/ - Consultada em 25/07/2023.
+.https://lpunb.fandom.com/wiki/Go_-_Grupo_2_-_2019/2#Construtores - Consultada em 25/07/2023.
+.https://go.dev/blog/survey2020-results - Consultada em 25/07/2023.
