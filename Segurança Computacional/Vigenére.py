@@ -10,11 +10,20 @@ class Vigenere:
         letras = self.alfabeto
         return letras[chave:] + letras[:chave]
 
-    def encode(self, key, msg):
+    def encode(self, key, msg , decode=False):
+        if len(key) < len(msg):
+            nKey = key * int(len(msg)/len(key))
+            if len(nKey):
+                nKey += key[:len(nKey)]
+        msg = self.format_str(msg)
+        for idx, char in enumerate(msg.upper()):
+            id_letra = self.alfabeto.find(key[idx])
+            
+            
         return
     
     def decode(self, key, msg):
-        return
+        return self.encode(key, msg, True)
     
 
 if __name__ == "__main__":
