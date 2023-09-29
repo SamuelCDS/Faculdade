@@ -18,9 +18,14 @@ class Vigenere:
         msg = self.format_str(msg)
         for idx, char in enumerate(msg.upper()):
             id_letra = self.alfabeto.find(key[idx])
-            
-            
-        return
+            cyalfa = self.deslocamento(self.alfabeto, id_letra)
+            if decode:
+                temp = cyalfa.find(char)
+                saida += self.alfabeto[temp]
+            else:
+                temp = cyalfa.find(char)
+                saida = cyalfa[temp]
+        return saida
     
     def decode(self, key, msg):
         return self.encode(key, msg, True)
